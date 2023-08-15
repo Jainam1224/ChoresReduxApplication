@@ -20,5 +20,9 @@ export const tasksSlice = createSlice({
       const task = createTask(action.payload);
       state.push(task);
     },
+    toogle: (state, action) => {
+      const task = state.find((task) => task.id === action.payload.taskId);
+      task.completed = action.payload.completed;
+    },
   },
 });

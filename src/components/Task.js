@@ -1,9 +1,10 @@
-import { Card } from '@twilio-paste/card';
-import { Checkbox } from '@twilio-paste/checkbox';
-import { Flex } from '@twilio-paste/flex';
-import { Label } from '@twilio-paste/label';
-import { useDispatch, useSelector } from 'react-redux';
-import { SelectHuman } from './SelectHuman';
+import { Card } from "@twilio-paste/card";
+import { Checkbox } from "@twilio-paste/checkbox";
+import { Flex } from "@twilio-paste/flex";
+import { Label } from "@twilio-paste/label";
+import { useDispatch, useSelector } from "react-redux";
+import { SelectHuman } from "./SelectHuman";
+import { tasksSlice } from "../store/tasksSlice";
 
 export const Task = ({ taskId }) => {
   const dispatch = useDispatch();
@@ -18,7 +19,14 @@ export const Task = ({ taskId }) => {
         <Checkbox
           id={`task-${taskId}`}
           checked={task.complete}
-          onChange={(event) => dispatch({ type: 'IMPLEMENT_ME' })}
+          onChange={(event) =>
+            dispatch(
+              tasksSlice.actions.toogle({
+                taskId,
+                completed: event.target.checked,
+              })
+            )
+          }
         />
         <Label htmlFor={`task-${taskId}`}>{task.title}</Label>
       </Flex>
