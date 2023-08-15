@@ -1,11 +1,12 @@
-import { Box } from '@twilio-paste/box';
-import { Input } from '@twilio-paste/input';
-import { Label } from '@twilio-paste/label';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { Box } from "@twilio-paste/box";
+import { Input } from "@twilio-paste/input";
+import { Label } from "@twilio-paste/label";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { tasksSlice } from "../store/tasksSlice";
 
 export const CreateTask = () => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const dispatch = useDispatch();
 
   return (
@@ -13,8 +14,8 @@ export const CreateTask = () => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          dispatch({ type: 'IMPLEMENT_ME' });
-          setTitle('');
+          dispatch(tasksSlice.actions.add(title));
+          setTitle("");
         }}
       >
         <Label htmlFor="create-task-title">Title</Label>
