@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createAction, createSlice, nanoid } from "@reduxjs/toolkit";
 
 const createTask = (title) => ({
   id: nanoid(),
@@ -24,5 +24,13 @@ export const tasksSlice = createSlice({
       const task = state.find((task) => task.id === action.payload.taskId);
       task.completed = action.payload.completed;
     },
+    assignedToUser: (state, action) => {
+      const task = state.find((task) => task.id === action.payload.taskId);
+      task.assignedTo = action.payload.humanId;
+    },
   },
 });
+
+export const toogelTask = createAction("tasks/toogle", (taskId, completed) => ({
+  payload: { taskId, completed },
+}));

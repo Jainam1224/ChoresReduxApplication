@@ -4,7 +4,7 @@ import { Flex } from "@twilio-paste/flex";
 import { Label } from "@twilio-paste/label";
 import { useDispatch, useSelector } from "react-redux";
 import { SelectHuman } from "./SelectHuman";
-import { tasksSlice } from "../store/tasksSlice";
+import { tasksSlice, toogelTask } from "../store/tasksSlice";
 
 export const Task = ({ taskId }) => {
   const dispatch = useDispatch();
@@ -21,10 +21,13 @@ export const Task = ({ taskId }) => {
           checked={task.complete}
           onChange={(event) =>
             dispatch(
-              tasksSlice.actions.toogle({
-                taskId,
-                completed: event.target.checked,
-              })
+              // tasksSlice.actions.toogle({
+              //   taskId,
+              //   completed: event.target.checked,
+              // })
+
+              // Logic by creating our own createActions
+              toogelTask(taskId, event.target.checked)
             )
           }
         />
