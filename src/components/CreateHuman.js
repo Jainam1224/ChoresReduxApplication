@@ -1,11 +1,11 @@
-import { Box } from '@twilio-paste/box';
-import { Input } from '@twilio-paste/input';
-import { Label } from '@twilio-paste/label';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { Box } from "@twilio-paste/box";
+import { Input } from "@twilio-paste/input";
+import { Label } from "@twilio-paste/label";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 export const CreateHuman = () => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const dispatch = useDispatch();
 
   return (
@@ -13,8 +13,8 @@ export const CreateHuman = () => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          dispatch({ type: 'IMPLEMENT_ME' });
-          setName('');
+          dispatch({ type: "IMPLEMENT_ME" });
+          setName("");
         }}
       >
         <Label htmlFor="create-human-name">Name</Label>
